@@ -26,10 +26,10 @@ aname as (--join the airline,route and airport
     on id = airline_id
     inner join
     sa
-    on gt_10000.id= source_airport_id
+    on sa.id= source_airport_id
     inner join
     da
-    on gt1_10000.id =destination_airport_id
+    on da.id =destination_airport_id
 )select distinct * from aname;
 
 
@@ -49,10 +49,10 @@ with MIN as (
 	where city = 'Athens' and country = 'Greece'
 ),sov as(
 	select destination_airport
-        from MIN
+  from MIN
 	intersect
 	select distinct AG.source_airport
-        from AG
+  from AG
 ),st as(--join airport and route
         select name,city,country
         from airport
